@@ -7,12 +7,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import io.github.ctlove0523.amqp.dto.BaseNotifyData;
+import io.github.ctlove0523.amqp.handlers.IotDeviceDeletedHandler;
 import io.github.ctlove0523.amqp.handlers.IotDeviceMessageHandler;
 import io.github.ctlove0523.commons.Predications;
-import io.github.ctlove0523.commons.serialization.JacksonUtil;
 import io.vertx.amqp.AmqpClient;
 import io.vertx.amqp.AmqpClientOptions;
 import io.vertx.amqp.AmqpConnection;
@@ -20,7 +17,6 @@ import io.vertx.amqp.AmqpMessage;
 import io.vertx.amqp.AmqpReceiver;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
-import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
@@ -32,10 +28,13 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 	private AmqpClient amqpClient;
 	private AmqpConnection amqpConnection;
 
-	private List<IotDeviceMessageHandler> messageReportedHandlers = new ArrayList<>();
+	private final List<IotDeviceMessageHandler> messageReportedHandlers = new ArrayList<>();
+
+	private AmqpMessageDispatcher dispatcher;
 
 	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options) {
 		this.options = options;
+		this.dispatcher = new DefaultAmqpMessageDispatcher();
 	}
 
 	@Override
@@ -139,7 +138,8 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 							receiverAsyncResult.result().handler(new Handler<AmqpMessage>() {
 								@Override
 								public void handle(AmqpMessage amqpMessage) {
-									dispatchMessage(amqpMessage);
+									dispatcher.dispatch(amqpMessage);
+
 								}
 							});
 						}
@@ -152,21 +152,20 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 		});
 	}
 
-	private void dispatchMessage(AmqpMessage amqpMessage) {
-		BaseNotifyData baseNotifyData = JacksonUtil.json2Object(amqpMessage.bodyAsString(), BaseNotifyData.class);
-		System.out.println(baseNotifyData.getResource());
-		String e = amqpMessage.bodyAsString();
-		System.out.println(e);
-	}
-
 	@Override
 	public void addDeviceMessageReportedHandler(IotDeviceMessageHandler handler) {
 		Predications.notNull(handler, "device message reported handler must not be null");
-		messageReportedHandlers.add(handler);
+		dispatcher.addDeviceMessageReportedHandler(handler);
 	}
 
 	@Override
 	public void addDeviceMessageReportedHandler(IotDeviceMessageHandler handler, ExecutorService executor) {
 
+	}
+
+	@Override
+	public void addDeviceDeltedHandler(IotDeviceDeletedHandler handler) {
+		Predications.notNull(handler, "device deleted handler must not be null");
+		dispatcher.addDeviceDeltedHandler(handler);
 	}
 }

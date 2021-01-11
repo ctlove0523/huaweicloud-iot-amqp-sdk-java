@@ -16,4 +16,6 @@ public class BaseNotifyData {
 
 	@JsonProperty("notify_data")
 	private Object notifyData;
+
+
 }

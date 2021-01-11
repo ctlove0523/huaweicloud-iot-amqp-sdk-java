@@ -20,6 +20,8 @@ public class IotAmqpClientTests {
 				.setQueueNames(Collections.singletonList("sdk-test"));
 
 		IotAmqpClient client = IotAmqpClient.create(options);
+		client.addDeviceMessageReportedHandler(new TestIotDeviceMessageHandler());
+		client.addDeviceDeltedHandler(new TestIotDeviceDeletedHandler());
 		client.connect().block();
 		TimeUnit.HOURS.sleep(1);
 	}

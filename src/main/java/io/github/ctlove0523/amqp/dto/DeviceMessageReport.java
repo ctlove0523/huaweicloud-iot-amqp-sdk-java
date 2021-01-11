@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class DeviceMessageReport {
 	private String topic;
-	private String content;
+	private Object content;
 }
