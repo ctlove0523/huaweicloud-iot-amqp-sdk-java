@@ -8,5 +8,4 @@ import lombok.Setter;
 @Setter
 public class DeviceDeleteNotifyData {
 	private NotifyDataHeader header;
-
 }

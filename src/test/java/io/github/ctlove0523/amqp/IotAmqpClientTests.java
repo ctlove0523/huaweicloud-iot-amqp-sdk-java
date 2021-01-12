@@ -1,6 +1,5 @@
 package io.github.ctlove0523.amqp;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +20,8 @@ public class IotAmqpClientTests {
 
 		IotAmqpClient client = IotAmqpClient.create(options);
 		client.addDeviceMessageReportedHandler(new TestIotDeviceMessageHandler());
-		client.addDeviceDeltedHandler(new TestIotDeviceDeletedHandler());
+		client.addDeviceDeletedHandler(new TestIotDeviceDeletedHandler());
+		client.addDeviceCreatedHandler(new TestIotDeviceCreatedHandler());
 		client.connect().block();
 		TimeUnit.HOURS.sleep(1);
 	}

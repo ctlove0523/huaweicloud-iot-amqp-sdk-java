@@ -7,6 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
+import io.github.ctlove0523.amqp.handlers.IotDeviceCreatedHandler;
 import io.github.ctlove0523.amqp.handlers.IotDeviceDeletedHandler;
 import io.github.ctlove0523.amqp.handlers.IotDeviceMessageHandler;
 import io.github.ctlove0523.commons.Predications;
@@ -164,8 +165,14 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 	}
 
 	@Override
-	public void addDeviceDeltedHandler(IotDeviceDeletedHandler handler) {
+	public void addDeviceDeletedHandler(IotDeviceDeletedHandler handler) {
 		Predications.notNull(handler, "device deleted handler must not be null");
-		dispatcher.addDeviceDeltedHandler(handler);
+		dispatcher.addDeviceDeletedHandler(handler);
+	}
+
+	@Override
+	public void addDeviceCreatedHandler(IotDeviceCreatedHandler handler) {
+		Predications.notNull(handler, "device created handler must not be null");
+		dispatcher.addDeviceCreatedHandler(handler);
 	}
 }
