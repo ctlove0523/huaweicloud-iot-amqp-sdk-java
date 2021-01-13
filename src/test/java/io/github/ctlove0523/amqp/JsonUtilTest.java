@@ -11,7 +11,7 @@ public class JsonUtilTest {
 
 	@Test
 	public void modifySourceFile() throws Exception {
-		String sourceFilePath = "D:\\codes\\GitHub\\huaweicloud-iot-amqp-sdk-java\\src\\main\\java\\io\\github\\ctlove0523\\amqp\\dto\\product\\DeletedProduct.java";
+		String sourceFilePath = "D:\\codes\\GitHub\\huaweicloud-iot-amqp-sdk-java\\src\\main\\java\\io\\github\\ctlove0523\\amqp\\dto\\property\\IotDevicePropertyReportData.java";
 		List<String> lines = Files.readAllLines(Paths.get(sourceFilePath));
 		List<String> newLines = new ArrayList<>();
 		for (String line : lines) {

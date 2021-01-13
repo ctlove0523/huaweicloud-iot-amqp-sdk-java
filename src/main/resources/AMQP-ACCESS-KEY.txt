@@ -3,18 +3,19 @@
     "access_code": "uI9jINFke3hTRrqg0CsmwBJppsVnl1nR"
 }
 {
-设备添加通知:device.create
-设备更新通知:device.update
-设备删除通知:device.delete
+设备添加通知:			device.create
+设备更新通知:			device.update
+设备删除通知:			device.delete
+产品添加通知:			product.create
+产品更新通知:			product.update
+产品删除通知:			product.delete
+设备消息上报通知:    	device.message.report
+设备状态变更通知:    	device.status.update
 
-产品添加通知:product.create
-产品更新通知:product.update
-产品删除通知:product.delete
 
-设备状态变更通知:    device.status.update
-设备属性上报通知:    device.property.report
-批量任务状态变更通知:batchtask.update
-设备消息上报通知:    device.message.report
-设备消息状态变更通知:device.message.status.update
-设备命令状态变更通知:device.commmad.status.update
+设备属性上报通知:    	device.property.report
+批量任务状态变更通知:	batchtask.update
+
+设备消息状态变更通知:	device.message.status.update
+设备命令状态变更通知:d	evice.commmad.status.update
 }
