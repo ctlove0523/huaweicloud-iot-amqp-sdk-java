@@ -14,7 +14,11 @@ import io.github.ctlove0523.amqp.dto.device.IotDeviceDeleteData;
 import io.github.ctlove0523.amqp.handlers.IotDeviceCreatedHandler;
 import io.github.ctlove0523.amqp.handlers.IotDeviceDeletedHandler;
 import io.github.ctlove0523.amqp.handlers.IotDeviceMessageHandler;
+import io.github.ctlove0523.amqp.handlers.IotDeviceUpdateHandler;
 import io.github.ctlove0523.amqp.handlers.IotHandler;
+import io.github.ctlove0523.amqp.handlers.IotProductCreatedHandler;
+import io.github.ctlove0523.amqp.handlers.IotProductDeletedHandler;
+import io.github.ctlove0523.amqp.handlers.IotProductUpdateHandler;
 import io.github.ctlove0523.commons.serialization.JacksonUtil;
 import io.vertx.amqp.AmqpMessage;
 
@@ -23,9 +27,14 @@ public class DefaultAmqpMessageDispatcher implements AmqpMessageDispatcher {
 	private final Map<String, List<IotHandler<?>>> handlers = new HashMap<>();
 
 	static {
-		TYPE_MAP.put("device.message.report", IotDeviceMessage.class);
 		TYPE_MAP.put("device.delete", IotDeviceDeleteData.class);
 		TYPE_MAP.put("device.create", IotDeviceCreatedData.class);
+		TYPE_MAP.put("device.update", IotDeviceUpdateHandler.class);
+
+		TYPE_MAP.put("product.create", IotProductCreatedHandler.class);
+		TYPE_MAP.put("product.update", IotProductUpdateHandler.class);
+		TYPE_MAP.put("product.delete", IotProductDeletedHandler.class);
+		TYPE_MAP.put("device.message.report", IotDeviceMessage.class);
 	}
 
 	@Override
