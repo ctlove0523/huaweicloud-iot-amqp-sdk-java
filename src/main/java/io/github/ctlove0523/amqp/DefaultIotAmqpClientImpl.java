@@ -3,14 +3,10 @@ package io.github.ctlove0523.amqp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import io.github.ctlove0523.amqp.handlers.IotDeviceCreatedHandler;
-import io.github.ctlove0523.amqp.handlers.IotDeviceDeletedHandler;
 import io.github.ctlove0523.amqp.handlers.IotDeviceMessageHandler;
-import io.github.ctlove0523.commons.Predications;
 import io.vertx.amqp.AmqpClient;
 import io.vertx.amqp.AmqpClientOptions;
 import io.vertx.amqp.AmqpConnection;
@@ -31,11 +27,11 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 
 	private final List<IotDeviceMessageHandler> messageReportedHandlers = new ArrayList<>();
 
-	private AmqpMessageDispatcher dispatcher;
+	private IotMessageDispatcher dispatcher;
 
 	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options) {
 		this.options = options;
-		this.dispatcher = new DefaultAmqpMessageDispatcher();
+		this.dispatcher = new DefaultIotMessageDispatcher();
 	}
 
 	@Override
@@ -151,23 +147,5 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 				});
 			}
 		});
-	}
-
-	@Override
-	public void addDeviceMessageReportedHandler(IotDeviceMessageHandler handler) {
-		Predications.notNull(handler, "device message reported handler must not be null");
-		dispatcher.addDeviceMessageReportedHandler(handler);
-	}
-
-	@Override
-	public void addDeviceDeletedHandler(IotDeviceDeletedHandler handler) {
-		Predications.notNull(handler, "device deleted handler must not be null");
-		dispatcher.addDeviceDeletedHandler(handler);
-	}
-
-	@Override
-	public void addDeviceCreatedHandler(IotDeviceCreatedHandler handler) {
-		Predications.notNull(handler, "device created handler must not be null");
-		dispatcher.addDeviceCreatedHandler(handler);
 	}
 }

@@ -11,6 +11,7 @@ public class IotAmqpClientOptions {
 	private int port;
 	private int idleTimeout;
 	private List<String> queueNames = new ArrayList<>();
+	private IotMessageDispatcher dispatcher;
 
 	public String getAccessKey() {
 		return accessKey;
@@ -73,6 +74,15 @@ public class IotAmqpClientOptions {
 
 	public IotAmqpClientOptions setQueueNames(List<String> queueNames) {
 		this.queueNames = queueNames;
+		return this;
+	}
+
+	public IotMessageDispatcher getDispatcher() {
+		return dispatcher;
+	}
+
+	public IotAmqpClientOptions setDispatcher(IotMessageDispatcher dispatcher) {
+		this.dispatcher = dispatcher;
 		return this;
 	}
 }

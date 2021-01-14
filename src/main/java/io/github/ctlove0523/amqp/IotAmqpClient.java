@@ -2,7 +2,7 @@ package io.github.ctlove0523.amqp;
 
 import reactor.core.publisher.Mono;
 
-public interface IotAmqpClient extends HandlerContainer {
+public interface IotAmqpClient {
 
 	static IotAmqpClient create(IotAmqpClientOptions options) {
 		return new DefaultIotAmqpClientImpl(options);
