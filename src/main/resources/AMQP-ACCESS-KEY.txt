@@ -11,11 +11,10 @@
 产品删除通知:			product.delete
 设备消息上报通知:    	device.message.report
 设备状态变更通知:    	device.status.update
-
-
 设备属性上报通知:    	device.property.report
+
 批量任务状态变更通知:	batchtask.update
 
 设备消息状态变更通知:	device.message.status.update
-设备命令状态变更通知:d	evice.commmad.status.update
+设备命令状态变更通知:d	device.commmad.status.update
 }

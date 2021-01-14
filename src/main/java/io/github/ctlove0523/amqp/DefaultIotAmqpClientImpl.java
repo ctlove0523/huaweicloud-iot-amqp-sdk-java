@@ -160,11 +160,6 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 	}
 
 	@Override
-	public void addDeviceMessageReportedHandler(IotDeviceMessageHandler handler, ExecutorService executor) {
-
-	}
-
-	@Override
 	public void addDeviceDeletedHandler(IotDeviceDeletedHandler handler) {
 		Predications.notNull(handler, "device deleted handler must not be null");
 		dispatcher.addDeviceDeletedHandler(handler);

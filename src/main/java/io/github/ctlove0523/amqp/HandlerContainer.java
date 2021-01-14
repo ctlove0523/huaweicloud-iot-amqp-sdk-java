@@ -10,8 +10,6 @@ public interface HandlerContainer {
 
 	void addDeviceMessageReportedHandler(IotDeviceMessageHandler handler);
 
-	void addDeviceMessageReportedHandler(IotDeviceMessageHandler handler, ExecutorService executor);
-
 	void addDeviceDeletedHandler(IotDeviceDeletedHandler handler);
 
 	void addDeviceCreatedHandler(IotDeviceCreatedHandler handler);
