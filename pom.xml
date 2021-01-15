@@ -49,6 +49,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-core</artifactId>
+			<version>3.9.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>io.github.ctlove0523</groupId>
 			<artifactId>commons</artifactId>
 			<version>0.0.1</version>
