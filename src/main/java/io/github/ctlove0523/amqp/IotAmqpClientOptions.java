@@ -3,6 +3,8 @@ package io.github.ctlove0523.amqp;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.github.ctlove0523.common.push.IotMessageDispatcher;
+
 public class IotAmqpClientOptions {
 	private String accessKey;
 	private String accessCode;

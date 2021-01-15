@@ -1,7 +1,7 @@
 package io.github.ctlove0523.amqp;
 
-import io.github.ctlove0523.amqp.dto.device.IotDeviceDeleteData;
-import io.github.ctlove0523.amqp.handlers.IotDeviceDeletedHandler;
+import io.github.ctlove0523.common.push.dto.device.IotDeviceDeleteData;
+import io.github.ctlove0523.common.push.handlers.IotDeviceDeletedHandler;
 import io.github.ctlove0523.commons.serialization.JacksonUtil;
 
 public class TestIotDeviceDeletedHandler implements IotDeviceDeletedHandler {

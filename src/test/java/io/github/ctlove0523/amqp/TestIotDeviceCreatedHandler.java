@@ -1,7 +1,7 @@
 package io.github.ctlove0523.amqp;
 
-import io.github.ctlove0523.amqp.dto.device.IotDeviceCreatedData;
-import io.github.ctlove0523.amqp.handlers.IotDeviceCreatedHandler;
+import io.github.ctlove0523.common.push.dto.device.IotDeviceCreatedData;
+import io.github.ctlove0523.common.push.handlers.IotDeviceCreatedHandler;
 import io.github.ctlove0523.commons.serialization.JacksonUtil;
 
 public class TestIotDeviceCreatedHandler implements IotDeviceCreatedHandler {

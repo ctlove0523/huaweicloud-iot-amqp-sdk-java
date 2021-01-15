@@ -1,12 +1,12 @@
 package io.github.ctlove0523.amqp;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import io.github.ctlove0523.amqp.handlers.IotDeviceMessageHandler;
+import io.github.ctlove0523.common.push.DefaultIotMessageDispatcher;
+import io.github.ctlove0523.common.push.DefaultIotPushMessage;
+import io.github.ctlove0523.common.push.IotMessageDispatcher;
 import io.vertx.amqp.AmqpClient;
 import io.vertx.amqp.AmqpClientOptions;
 import io.vertx.amqp.AmqpConnection;
@@ -25,13 +25,14 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 	private AmqpClient amqpClient;
 	private AmqpConnection amqpConnection;
 
-	private final List<IotDeviceMessageHandler> messageReportedHandlers = new ArrayList<>();
-
 	private IotMessageDispatcher dispatcher;
 
 	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options) {
+		this(options, new DefaultIotMessageDispatcher());
+	}
+	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options,IotMessageDispatcher dispatcher) {
 		this.options = options;
-		this.dispatcher = new DefaultIotMessageDispatcher();
+		this.dispatcher = dispatcher;
 	}
 
 	@Override
@@ -137,7 +138,7 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 							receiverAsyncResult.result().handler(new Handler<AmqpMessage>() {
 								@Override
 								public void handle(AmqpMessage amqpMessage) {
-									dispatcher.dispatch(amqpMessage);
+									dispatcher.dispatch(new DefaultIotPushMessage(amqpMessage.bodyAsString()));
 
 								}
 							});

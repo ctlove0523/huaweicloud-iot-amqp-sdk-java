@@ -1,7 +1,7 @@
 package io.github.ctlove0523.amqp;
 
-import io.github.ctlove0523.amqp.dto.IotDeviceMessage;
-import io.github.ctlove0523.amqp.handlers.IotDeviceMessageHandler;
+import io.github.ctlove0523.common.push.dto.IotDeviceMessage;
+import io.github.ctlove0523.common.push.handlers.IotDeviceMessageHandler;
 import io.github.ctlove0523.commons.serialization.JacksonUtil;
 
 public class TestIotDeviceMessageHandler implements IotDeviceMessageHandler {

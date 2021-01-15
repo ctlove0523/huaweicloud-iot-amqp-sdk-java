@@ -55,6 +55,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>io.github.ctlove0523</groupId>
+			<artifactId>huaweicloud-iot-common-push</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13</version>
