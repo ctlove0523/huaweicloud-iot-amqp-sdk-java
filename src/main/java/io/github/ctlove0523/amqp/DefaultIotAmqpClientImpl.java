@@ -48,7 +48,9 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 				.setIdleTimeout(600000)
 				.addEnabledSaslMechanism("PLAIN")
 				.setSsl(true)
-				.setTrustAll(true);
+				.setTrustAll(true)
+				.setTcpNoDelay(true)
+				.setTcpKeepAlive(true);
 
 		AmqpClient client = AmqpClient.create(clientOptions);
 		this.amqpClient = client;

@@ -9,8 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class IotDeviceCommandStatusUpdateNotifyDataV5 extends BaseNotifyData {
-	@JsonProperty("notify_data")
+	@JsonProperty("notifyData")
 	private DeviceCommandStatusUpdateNotifyDataV5 notifyData;
 
 }
+
+
 
