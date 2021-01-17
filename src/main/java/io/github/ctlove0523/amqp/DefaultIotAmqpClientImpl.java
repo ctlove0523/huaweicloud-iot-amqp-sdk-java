@@ -4,7 +4,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 
-import io.github.ctlove0523.common.push.DefaultIotMessageDispatcher;
 import io.github.ctlove0523.common.push.DefaultIotPushMessage;
 import io.github.ctlove0523.common.push.IotMessageDispatcher;
 import io.vertx.amqp.AmqpClient;
@@ -28,9 +27,10 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 	private IotMessageDispatcher dispatcher;
 
 	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options) {
-		this(options, new DefaultIotMessageDispatcher());
+		this(options, options.getDispatcher());
 	}
-	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options,IotMessageDispatcher dispatcher) {
+
+	public DefaultIotAmqpClientImpl(IotAmqpClientOptions options, IotMessageDispatcher dispatcher) {
 		this.options = options;
 		this.dispatcher = dispatcher;
 	}
@@ -47,11 +47,13 @@ public class DefaultIotAmqpClientImpl implements IotAmqpClient {
 				.setVirtualHost(options.getVirtualHost())
 				.setIdleTimeout(options.getIdleTimeout())
 				.setIdleTimeout(600000)
-				.addEnabledSaslMechanism("PLAIN")
-				.setSsl(true)
+				.setSsl(options.isSsl())
 				.setTrustAll(true)
 				.setTcpNoDelay(true)
 				.setTcpKeepAlive(true);
+		if (options.isSsl()) {
+			clientOptions.addEnabledSaslMechanism("PLAIN");
+		}
 
 		AmqpClient client = AmqpClient.create(clientOptions);
 		this.amqpClient = client;

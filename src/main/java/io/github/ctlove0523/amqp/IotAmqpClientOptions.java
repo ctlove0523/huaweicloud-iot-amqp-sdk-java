@@ -14,6 +14,7 @@ public class IotAmqpClientOptions {
 	private int idleTimeout;
 	private List<String> queueNames = new ArrayList<>();
 	private IotMessageDispatcher dispatcher;
+	private boolean ssl;
 
 	public String getAccessKey() {
 		return accessKey;
@@ -85,6 +86,15 @@ public class IotAmqpClientOptions {
 
 	public IotAmqpClientOptions setDispatcher(IotMessageDispatcher dispatcher) {
 		this.dispatcher = dispatcher;
+		return this;
+	}
+
+	public boolean isSsl() {
+		return ssl;
+	}
+
+	public IotAmqpClientOptions setSsl(boolean ssl) {
+		this.ssl = ssl;
 		return this;
 	}
 }
