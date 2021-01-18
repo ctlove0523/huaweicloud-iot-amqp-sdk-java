@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.ctlove0523</groupId>
-	<artifactId>huawei-iot-amqp-sdk-java</artifactId>
+	<artifactId>huawei-iot-push-sdk-java</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
@@ -23,6 +23,11 @@
 			<artifactId>vertx-amqp-client</artifactId>
 			<version>4.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-web</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -35,6 +40,7 @@
 			<artifactId>reactor-core</artifactId>
 			<version>3.3.10.RELEASE</version>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>

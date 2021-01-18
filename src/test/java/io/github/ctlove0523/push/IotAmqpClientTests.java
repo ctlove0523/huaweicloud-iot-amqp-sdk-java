@@ -1,10 +1,12 @@
-package io.github.ctlove0523.amqp;
+package io.github.ctlove0523.push;
 
 import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 import io.github.ctlove0523.common.push.DefaultIotMessageDispatcher;
 import io.github.ctlove0523.common.push.IotMessageDispatcher;
+import io.github.ctlove0523.push.amqp.IotAmqpClient;
+import io.github.ctlove0523.push.amqp.IotAmqpClientOptions;
 import org.junit.Test;
 
 public class IotAmqpClientTests {

@@ -1,4 +1,4 @@
-package io.github.ctlove0523.amqp;
+package io.github.ctlove0523.push;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;

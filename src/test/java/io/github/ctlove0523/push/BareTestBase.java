@@ -1,4 +1,4 @@
-package io.github.ctlove0523.amqp;
+package io.github.ctlove0523.push;
 
 import io.vertx.amqp.AmqpClient;
 import io.vertx.core.Vertx;

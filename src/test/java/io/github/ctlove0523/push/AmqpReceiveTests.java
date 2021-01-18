@@ -1,4 +1,4 @@
-package io.github.ctlove0523.amqp;
+package io.github.ctlove0523.push;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,6 +8,8 @@ import java.util.UUID;
 import io.github.ctlove0523.common.push.DefaultIotMessageDispatcher;
 import io.github.ctlove0523.common.push.IotMessageDispatcher;
 import io.github.ctlove0523.commons.serialization.JacksonUtil;
+import io.github.ctlove0523.push.amqp.IotAmqpClient;
+import io.github.ctlove0523.push.amqp.IotAmqpClientOptions;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import org.apache.qpid.proton.amqp.messaging.Accepted;

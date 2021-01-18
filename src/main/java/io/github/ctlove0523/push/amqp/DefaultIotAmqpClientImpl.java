@@ -1,4 +1,4 @@
-package io.github.ctlove0523.amqp;
+package io.github.ctlove0523.push.amqp;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiFunction;

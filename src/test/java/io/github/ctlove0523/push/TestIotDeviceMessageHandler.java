@@ -1,4 +1,4 @@
-package io.github.ctlove0523.amqp;
+package io.github.ctlove0523.push;
 
 import io.github.ctlove0523.common.push.dto.IotDeviceMessage;
 import io.github.ctlove0523.common.push.handlers.IotDeviceMessageHandler;
