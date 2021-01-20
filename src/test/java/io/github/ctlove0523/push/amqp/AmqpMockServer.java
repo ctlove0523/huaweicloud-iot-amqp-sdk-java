@@ -1,4 +1,6 @@
-package io.github.ctlove0523.push;
+package io.github.ctlove0523.push.amqp;
+
+import java.util.concurrent.ExecutionException;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
@@ -7,21 +9,19 @@ import io.vertx.proton.ProtonConnection;
 import io.vertx.proton.ProtonServer;
 import io.vertx.proton.ProtonServerOptions;
 
-import java.util.concurrent.ExecutionException;
-
-public class MockServer {
+public class AmqpMockServer {
 	private ProtonServer server;
 
 	// Toggle to (re)use a fixed port, e.g for capture.
 	private int bindPort = 0;
 	private boolean reuseAddress = false;
 
-	public MockServer(Vertx vertx, Handler<ProtonConnection> connectionHandler)
+	public AmqpMockServer(Vertx vertx, Handler<ProtonConnection> connectionHandler)
 			throws ExecutionException, InterruptedException {
 		this(vertx, connectionHandler, null);
 	}
 
-	public MockServer(Vertx vertx, Handler<ProtonConnection> connectionHandler, ProtonServerOptions protonServerOptions)
+	public AmqpMockServer(Vertx vertx, Handler<ProtonConnection> connectionHandler, ProtonServerOptions protonServerOptions)
 			throws ExecutionException, InterruptedException {
 		if (protonServerOptions == null) {
 			protonServerOptions = new ProtonServerOptions();

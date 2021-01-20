@@ -1,4 +1,7 @@
-package io.github.ctlove0523.push;
+package io.github.ctlove0523.push.amqp;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import io.vertx.amqp.AmqpClient;
 import io.vertx.core.Vertx;
@@ -9,9 +12,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runner.RunWith;
-
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 @RunWith(VertxUnitRunner.class)
 public class BareTestBase {

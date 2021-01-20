@@ -17,7 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Mono;
 
-public class DefaultIotAmqpClientImpl implements IotAmqpClient {
+class DefaultIotAmqpClientImpl implements IotAmqpClient {
 	private static final Logger log = LoggerFactory.getLogger(DefaultIotAmqpClientImpl.class);
 
 	private final IotAmqpClientOptions options;

@@ -1,4 +1,4 @@
-package io.github.ctlove0523.push;
+package io.github.ctlove0523.push.amqp;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -8,8 +8,8 @@ import java.util.UUID;
 import io.github.ctlove0523.common.push.DefaultIotMessageDispatcher;
 import io.github.ctlove0523.common.push.IotMessageDispatcher;
 import io.github.ctlove0523.commons.serialization.JacksonUtil;
-import io.github.ctlove0523.push.amqp.IotAmqpClient;
-import io.github.ctlove0523.push.amqp.IotAmqpClientOptions;
+import io.github.ctlove0523.push.IotPushDataUtil;
+import io.github.ctlove0523.push.TestIotDeviceCreatedHandler;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
 import org.apache.qpid.proton.amqp.messaging.Accepted;
@@ -29,7 +29,7 @@ public class AmqpReceiveTests extends BareTestBase {
 	@Rule
 	public OutputCaptureRule outputCapture = new OutputCaptureRule();
 
-	private MockServer server;
+	private AmqpMockServer server;
 
 	@After
 	@Override
@@ -47,7 +47,7 @@ public class AmqpReceiveTests extends BareTestBase {
 
 		Async asyncSendMsg = context.async();
 
-		server = new MockServer(vertx, serverConnection -> {
+		server = new AmqpMockServer(vertx, serverConnection -> {
 			serverConnection.openHandler(serverSender -> {
 				serverConnection.closeHandler(x -> serverConnection.close());
 				serverConnection.open();

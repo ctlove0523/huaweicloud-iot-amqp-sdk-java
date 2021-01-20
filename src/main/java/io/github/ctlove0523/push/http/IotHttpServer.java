@@ -1,16 +1,15 @@
 package io.github.ctlove0523.push.http;
 
 
-import io.github.ctlove0523.common.push.IotMessageDispatcher;
 import reactor.core.publisher.Mono;
 
 public interface IotHttpServer {
 
-	Mono<IotHttpServer> listen(int port, String host);
+	static IotHttpServer createIotHttpServer(IotHttpServerOptions options) {
+		return new DefaultIotHttpServer(options);
+	}
 
-	Mono<IotHttpServer> listen(int port);
+	Mono<Boolean> start();
 
-	Mono<IotHttpServer> url(String url);
-
-	Mono<IotHttpServer> dispatcher(IotMessageDispatcher dispatcher);
+	Mono<Boolean> shutdown();
 }
