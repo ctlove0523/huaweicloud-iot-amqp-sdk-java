@@ -6,7 +6,7 @@ huaweicloud-iot-push-sdk-java提供接收华为云IoT平台数据推送Java版�
 
 整体架构
 
-![](.\img\architecture.png)
+![](./img/architecture.png)
 
 安装构建
 
